@@ -2,13 +2,14 @@ import React from 'react'
 import * as style from '../../Styles/styles'
 import { EmptyHeart, FilledHeart } from '../../Assets/icons'
 
-function UserProfile({isDone, children}) {
+function UserProfile({Likes, children}) {
+
   return (
-    <style.FlexCenter>
+    <style.ProfileContainer>
         <style.ProfileCircle/>
         <span>{children}</span>
-        {isDone ? <EmptyHeart width={'30px'}/> : <FilledHeart width={'30px'}/>}
-    </style.FlexCenter>
+        {Likes.isLike ? <FilledHeart width={"25px"}/> : <EmptyHeart width={"25px"}/>}
+    </style.ProfileContainer>
   )
 }
 

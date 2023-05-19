@@ -1,18 +1,18 @@
-import React from 'react'
-import * as style from '../Styles/styles'
-import UserCard from '../Components/UserCard'
+import React from "react";
+import * as style from "../Styles/styles";
+import UserCard from "../Components/UserCard";
+import { yourData } from '../Components/testYourTodo';
 
 function YourTodo() {
-    const tmpArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const data = yourData.UserAll;
+
   return (
     <style.YourBody>
-        {tmpArray.map(() => {
-            return (
-                <UserCard />
-            )
-        })}
+      {data.map((todoList) => {
+        return <UserCard data={todoList} key={todoList.userId}/>;
+      })}
     </style.YourBody>
-  )
+  );
 }
 
-export default YourTodo
+export default YourTodo;

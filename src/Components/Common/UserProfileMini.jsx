@@ -3,10 +3,10 @@ import * as style from "../../Styles/styles"
 function UserProfileMini({children}) {
 
     return (
-        <style.ProfileContainer>
+        <style.ProfileMiniContainer>
             <style.ProfileCircle />
             <span>{children}</span>
-        </style.ProfileContainer>
+        </style.ProfileMiniContainer>
     )
 
 
