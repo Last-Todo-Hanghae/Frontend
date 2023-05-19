@@ -4,12 +4,14 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Header from './Components/Header';
 import YourTodo from './Pages/YourTodo';
+import TodoInput from './Components/Common/TodoInput';
 
 function App() {
   
   return (
-    <YourTodo />
-    // <Login />
+    // <YourTodo />
+    // <TodoInput />
+    <SignUp />
 
 
 
