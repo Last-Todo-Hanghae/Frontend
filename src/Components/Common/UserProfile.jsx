@@ -5,11 +5,11 @@ import { EmptyHeart, FilledHeart } from '../../Assets/icons'
 function UserProfile({Likes, children}) {
 
   return (
-    <style.FlexCenter>
+    <style.ProfileContainer>
         <style.ProfileCircle/>
         <span>{children}</span>
-        {Likes.isLike ? <FilledHeart width={'30px'}/> : <EmptyHeart width={'30px'}/>}
-    </style.FlexCenter>
+        {Likes.isLike ? <FilledHeart width={"25px"}/> : <EmptyHeart width={"25px"}/>}
+    </style.ProfileContainer>
   )
 }
 

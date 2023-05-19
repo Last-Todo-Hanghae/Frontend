@@ -3,7 +3,7 @@ import * as style from "../../Styles/styles"
 import InputStatusBtn from './InputStatusBtn'
 
 function TodoInput() {
-    const inputStatus = "month"
+    const inputStatus = "today"
   return (
     <style.InputContainer>
         <style.Input />

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import * as sVar from "../Styles/styleVarients"
 
 const GlobalStyles = createGlobalStyle`
   /* Eric Meyer's CSS Reset */
@@ -21,6 +22,8 @@ const GlobalStyles = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    color: ${sVar.black80};
+    font-family: "Noto Sans KR", sans-serif;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
@@ -45,7 +48,6 @@ const GlobalStyles = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap');
   * {
     background-color: #FBFBFD;
   }

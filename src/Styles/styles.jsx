@@ -15,9 +15,21 @@ export const FlexCenterColumn = styled(FlexCenter)`
 `;
 // 3. Layout 크기 지정
 export const Layout = styled.div`
-  max-width: 1200px;
-  min-width: 800px;
+    ${props => {
+        if (props.width > 1200) {
+            return `width: 1200px;`
+        } else {
+            return `width: 800px;`
+        }
+    }}
+  /* max-width: 1200px;
+  min-width: 800px; */
 `;
+// 4. H1 크기 지정
+export const H1 = styled.h1`
+  font-size: 24pt;
+  font-weight: bold;
+`
 
 // 헤더
 // 1. My Todos, Your Todos, Logout 메뉴 정렬
@@ -42,14 +54,21 @@ export const ProfileCircle = styled.div`
   border: 1px solid black;
 `;
 // 3. profile container
-export const ProfileContainer = styled(FlexCenter)`
+export const ProfileMiniContainer = styled(FlexCenter)`
   width: 20%;
+  gap: 10px;
+  margin: 10px;
 `;
 // 3. header container
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled(FlexCenter)`
   width: 100%;
   display: flex;
 `;
+// 4. userProfile container
+export const ProfileContainer = styled(FlexCenter)`
+    gap: 10px;
+    margin: 10px;
+`
 
 // 모달
 // 1. 모달 배경 (어둡게)
@@ -103,8 +122,8 @@ export const SignBtn = styled.button`
 // YourTodo
 // 1. YourTodo - todo Body
 export const YourBody = styled(FlexCenter)`
-  padding: 10px;
-  gap: 10px;
+  padding: 20px;
+  gap: 20px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -118,12 +137,10 @@ export const YourCard = styled.div`
 `;
 
 // 3. YourTodo - todo Container
-export const YourTodoContainer = styled.div`
+export const YourTodoContainer = styled(FlexCenterColumn)`
   padding: 10px;
   gap: 10px;
 
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
 `;
 
 // 4. YourTodo - todo 항목
@@ -138,6 +155,7 @@ export const YourTodoList = styled.div`
 export const InputContainer = styled(FlexCenter)`
   width: 660px;
   justify-content: space-around;
+  padding: 30px 0 40px 0;
 `;
 
 // MyTodo Input
@@ -189,11 +207,102 @@ export const InputStateBtn = styled(InputDefaultBtn)`
   }}
 `;
 
-// MyTodo List Container
-export const MyTodoListContainer = styled(FlexCenterColumn)`
-    > h3 {
-        color: ${sVar.black80};
+// MyTodo small inputStateBtns
+export const InputStateBtnSmall = styled(InputStateBtn)`
+    width: auto;
+    height: auto;
+    padding: 4px 6px;
+`
+export const InputDefaultBtnSmall = styled(InputDefaultBtn)`
+    width: auto;
+    height: auto;
+    padding: 4px 6px;
+`
+
+// MyTodo Checkbox
+export const Checkbox = styled.input`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.4s;
+    border: 2px solid ${sVar.black40};
+    &:checked {
+        background: ${sVar.darkGreen80};
+        color: white;
+        border: none;
     }
 `
-// MyTodo TodoCard
-// export const 
+
+// MyTodo Entry
+export const Entry = styled.span`
+    margin-left: 10px;
+    font-size: 14px;
+    ${props => {
+        if (props.isDone) {
+            return `
+                text-decoration: line-through;
+                color: ${sVar.black20};
+            `
+        }
+    }}
+`
+
+// MyTodo Container
+export const MyTodoContainer = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+`
+
+// MyTodo List Container
+export const MyTodoListContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > h3 {
+        font-size: 14pt;
+        color: ${sVar.black80};
+        font-weight: bold;
+        padding: 10px;
+    }
+`
+
+// MyTodoCard Container
+export const MyTodoCardContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+`
+
+// MyTodoBtn Container
+export const MyTodoCardBtnContainer = styled(FlexCenter)`
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+
+`
+
+// MyTodoCardEntry Container
+export const MyTodoCardEntryContainer = styled(FlexCenterColumn)`
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    /* border: 1px solid ${sVar.black20}; */
+    margin: 10px 0;
+    box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.05);
+`
+
+// MyTodo Text Container
+export const MyTodoTextContainer = styled.div`
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+`
