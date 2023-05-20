@@ -17,14 +17,27 @@
 - styled-components
 - axios
 - react-router-dom
+<<<<<<< HEAD
 - redux-toolkit
 - redux
+=======
+- redux-toolkit (redux)
+- react query
+>>>>>>> 34dd16b8f977ed5f9d962569fd820916dcc8678e
 
 - 쓸까?말까? redux / react-redux / redux-toolkit
 
 ---
+# 3. 역할 분담
+- css/html - 가형님
+- 레이아웃 - Both
+    - Header : 가형님 (완료)
+    - 회원가입 & 로그인 (form) : 단이님 (완료)
+    - MyTodo & YourTodo 모달 : 가형님
+    - YourTodo 화면 : 단이님
 
 # 3. 일정
+# 4. 일정
 ## 5/15 ~ 5/19
 1. 심화 강의 정독 (5/17일까지!)
 2. css/html - 가형님
@@ -35,4 +48,15 @@
     - 로그인
     - 로그아웃
     - MyTodo(Input, 버튼 구현)
-5. JSON-server
+5. JSON-server## 5/17 ~ 5/19
+1. 화면 레이아웃 구현
+2. 회원가입 기능 구현
+## 5/20
+1. 로그인 / 로그아웃 기능 구현
+2. 레이아웃 테스트
+3. MyTodo 기능 구현 진행 (모달 및 사진 첨부 기능 추가)
+## 5/21
+1. MyTodo 기능 구현 완료 (모달 및 사진 첨부 기능 추가)
+2. YourTodo 기능 구현 진행 (모달 포함)
+
+- 22일, 23일 미흡 기능 보완 및 CSS 작업
