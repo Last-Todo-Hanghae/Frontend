@@ -24,7 +24,7 @@ function LoginBox() {
   // 로그인 완료 시 mytodo로 이동하기 위한 hook
   const navigate = useNavigate();
 
-  // 
+  //
   const mutation = useMutation(postLogIn, {
     onSuccess: () => {
       alert("로그인에 성공하셨습니다.");
@@ -42,14 +42,24 @@ function LoginBox() {
     <style.FlexCenterColumn>
       <style.SignContainer>
         <style.SignForm>
-          <label>
-            ID :
-            <style.SignInput name="id" type="text" value={id} onChange={onChangeInput}/>
-          </label>
-          <label>
-            PW :
-            <style.SignInput name="pw" type="password" value={pw} onChange={onChangeInput}/>
-          </label>
+          <style.FlexCenter>
+            <label for="id">ID</label>
+            <style.LogInput
+              name="id"
+              type="text"
+              value={id}
+              onChange={onChangeInput}
+            />
+          </style.FlexCenter>
+          <style.FlexCenter>
+            <label for="pw">PW</label>
+            <style.LogInput
+              name="pw"
+              type="password"
+              value={pw}
+              onChange={onChangeInput}
+            />
+          </style.FlexCenter>
         </style.SignForm>
         <a>회원가입</a>
         <style.SignBtn onClick={useLoginBtn}>Login</style.SignBtn>

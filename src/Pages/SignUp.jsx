@@ -8,9 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const regIdCond = /^[A-Za-z0-9]{4,15}$/;
-  const regPwCond =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
-
+  const regPwCond = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
   const [userInfo, setUserInfo] = useState({ id: "", pw: "" });
   const [pwConfirm, setPwConfirm] = useState("");
   const [idPassed, setIdPassed] = useState(false);
@@ -86,44 +84,28 @@ function SignUp() {
 
   // asdfA123!
   return (
-    <style.FlexCenterColumn>
-      <style.SignContainer>
+    <style.SignContainer>
+      {/* <style.SignContainer> */}
         <style.SignForm>
-          <label>
-            ID :
-            <style.SignInput
-              name="id"
-              onChange={onChangeInput}
-              value={id}
-              type="text"
-            />
-          </label>
-          <label>
-            PW :
-            <style.SignInput
-              name="pw"
-              onChange={onChangeInput}
-              value={pw}
-              type="password"
-            />
-          </label>
-          <label>
-            확인 :
-            <style.SignInput
-              name="pwConfirm"
-              onChange={onConfirmHandler}
-              value={pwConfirm}
-              type="password"
-            />
-          </label>
+          <style.FlexCenter>
+            <label for="id">ID</label>
+            <style.LogInput name="id" onChange={onChangeInput} value={id} type="text" />
+          </style.FlexCenter>
+          <style.FlexCenter>
+            <label for="pw">PW</label>
+            <style.LogInput name="pw" onChange={onChangeInput} value={pw} type="password" />
+          </style.FlexCenter>
+          <style.FlexCenter>
+            <label for="pwConfirm">확인</label>
+            <style.LogInput name="pwConfirm" onChange={onConfirmHandler} value={pwConfirm} type="password" />
+          </style.FlexCenter>
         </style.SignForm>
-        <a href="#">로그인</a>
+        <a href="/">로그인</a>
         <SignUpBtn
           isPassed={idPassed && pwPassed && confirmPassed}
           onClick={useSignUpBtn}
         />
       </style.SignContainer>
-    </style.FlexCenterColumn>
   );
 }
 

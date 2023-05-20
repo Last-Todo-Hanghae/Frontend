@@ -6,7 +6,7 @@ import Header from '../Components/Header'
 function Login() {
   return (
     <style.Layout>
-        <Header/>
+        {/* <Header/> */}
         <LoginBox />
     </style.Layout>
   )
