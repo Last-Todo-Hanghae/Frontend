@@ -11,23 +11,16 @@
     styled-components 다 export 하기
     import * as sytle from "/Style/~~~.jsx"
 
----
 
 # 2. Packages
 - styled-components
 - axios
 - react-router-dom
-<<<<<<< HEAD
 - redux-toolkit
 - redux
-=======
-- redux-toolkit (redux)
-- react query
->>>>>>> 34dd16b8f977ed5f9d962569fd820916dcc8678e
+- react-query
 
-- 쓸까?말까? redux / react-redux / redux-toolkit
 
----
 # 3. 역할 분담
 - css/html - 가형님
 - 레이아웃 - Both
@@ -36,7 +29,6 @@
     - MyTodo & YourTodo 모달 : 가형님
     - YourTodo 화면 : 단이님
 
-# 3. 일정
 # 4. 일정
 ## 5/15 ~ 5/19
 1. 심화 강의 정독 (5/17일까지!)
