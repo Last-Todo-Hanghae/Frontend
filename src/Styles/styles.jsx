@@ -8,22 +8,29 @@ export const FlexCenter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > label {
+    color: ${sVar.black60};
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+  }
 `;
 // 2. flexbox, 가운데 정렬, column 방향 정렬
 export const FlexCenterColumn = styled(FlexCenter)`
   flex-direction: column;
 `;
 // 3. Layout 크기 지정
-export const Layout = styled.div`
-    ${props => {
+export const Layout = styled(FlexCenterColumn)`
+    /* ${props => {
         if (props.width > 1200) {
             return `width: 1200px;`
         } else {
             return `width: 800px;`
         }
-    }}
-  /* max-width: 1200px;
-  min-width: 800px; */
+    }} */
+  max-width: 1200px;
+  min-width: 800px;
 `;
 // 4. H1 크기 지정
 export const H1 = styled.h1`
@@ -61,13 +68,14 @@ export const ProfileMiniContainer = styled(FlexCenter)`
 `;
 // 3. header container
 export const HeaderContainer = styled(FlexCenter)`
+  margin: 20px 0;
   width: 100%;
   display: flex;
 `;
 // 4. userProfile container
 export const ProfileContainer = styled(FlexCenter)`
-    gap: 10px;
-    margin: 10px;
+    gap: 15px;
+    margin: 20px 10px 20px 10px;
 `
 
 // 모달
@@ -85,17 +93,42 @@ const ModalBackgroundStyle = styled.div`
   z-index: 1;
 `;
 
+// width 100% & flexbox
+// 1. row flex + width 100%
+export const FlexCenter100 = styled(FlexCenter)`
+  width: 100%;
+`
+// 2. column flex + width 100%
+export const FlexCenterColumn100 = styled(FlexCenterColumn)`
+  width: 100%;
+`
+
 // 로그인, 회원가입
 // 1. 로그인, 회원가입 공통 style
 export const SignContainer = styled(FlexCenter)`
   width: 100%;
-  height: 600px;
-  border: 1px solid black;
+  height: 80vh;
+  /* height: 600px; */
+  /* border: 1px solid black; */
   flex-direction: column;
+
+  > a {
+    display: flex;
+    margin: 20px 0 30px 0;
+    text-decoration: none;
+    font-size: 10pt;
+    transition: color 0.4s ease-in-out, text-decoration 0.2s ease-in-out;
+
+    &:hover {
+      color: ${sVar.darkGreen80};
+      text-decoration: underline;
+    }
+  }
 `;
 
 // 2. 로그인, 회원가입 form
 export const SignForm = styled.form`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,35 +137,30 @@ export const SignForm = styled.form`
 
 // 3. 로그인, 회원가입 input
 export const SignInput = styled.input`
-  width: 600px;
+  width: 80%;
+  /* width: 600px; */
   height: 75px;
   border: 1px solid gray;
   border-radius: 50px;
 `;
 
-// 4. 로그인, 회원가입 button
-export const SignBtn = styled.button`
-  width: 200px;
-  height: 70px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  cursor: pointer;
-`;
+
 
 // YourTodo
 // 1. YourTodo - todo Body
 export const YourBody = styled(FlexCenter)`
   padding: 20px;
   gap: 20px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;
 
 // 2. YourTodo - todo Card
 export const YourCard = styled.div`
-  height: 350px;
-  border: 1px solid gray;
+  width: 280px;
+  height: 300px;
+  box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.05);
+  /* border: 1px solid ${sVar.black20}; */
   border-radius: 10px;
 `;
 
@@ -176,6 +204,12 @@ export const Input = styled.input`
   }
 `;
 
+export const LogInput = styled(Input)`
+  border-radius: 20px;
+  /* background-color: white; */
+  margin: 10px 0;
+`
+
 // Mytodo Input default btn
 export const InputDefaultBtn = styled.button`
   width: 100px;
@@ -183,6 +217,24 @@ export const InputDefaultBtn = styled.button`
   color: ${sVar.black60};
   border: 1px solid ${sVar.black60};
   border-radius: 4px;
+`;
+
+// 4. 로그인, 회원가입 button
+export const SignBtn = styled(InputDefaultBtn)`
+  transition: background-color 0.2s ease-in-out,
+              color 0.2s ease-in-out,
+              border 0.2s ease-in-out;
+  
+  &:hover {
+    background-color: ${sVar.vividGreen80};
+    border: 1px solid ${sVar.vividGreen100};
+    color: white;
+  }
+  /* width: 160px;
+  height: 40px; */
+  /* border: 1px solid gray;
+  border-radius: 10px; */
+  /* cursor: pointer; */
 `;
 
 // MyTodo Input State Btns
@@ -297,6 +349,15 @@ export const MyTodoCardEntryContainer = styled(FlexCenterColumn)`
     /* border: 1px solid ${sVar.black20}; */
     margin: 10px 0;
     box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.05);
+`
+
+export const YourTodoEntryContainer = styled(MyTodoCardEntryContainer)`
+  width: 85%;
+  padding: 10px;
+  box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.02);
+  border: 1.5px solid ${sVar.black20};
+  margin: 0 10px 5px 10px;
+  color: ${sVar.black60};
 `
 
 // MyTodo Text Container

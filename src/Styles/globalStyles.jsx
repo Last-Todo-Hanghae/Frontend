@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
     vertical-align: baseline;
     color: ${sVar.black80};
     font-family: "Noto Sans KR", sans-serif;
+    /* background-color: rgba(238, 238, 238, 1); */
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
