@@ -7,9 +7,11 @@ function YourTodoList({ todos }) {
     <style.YourTodoContainer>
       {todos.map(({todoId, todoContent, todoStatus}) => {
         return (
-        <style.YourTodoList key={todoId}>
+        // <style.YourTodoList key={todoId}>
+        <style.YourTodoEntryContainer key={todoId}>
             {todoContent}
-        </style.YourTodoList>
+        </style.YourTodoEntryContainer>
+        // </style.YourTodoList>
         );
       })}
     </style.YourTodoContainer>

@@ -6,16 +6,16 @@ function LoginBox() {
     <style.FlexCenterColumn>
         <style.SignContainer>
             <style.SignForm>
-                <label>
-                    ID :
-                    <style.SignInput name="id" type="text" />
-                </label>
-                <label>
-                    PW : 
-                    <style.SignInput name="pw" type="password" />
-                </label>
+                <style.FlexCenter>
+                    <label for="id">ID</label>
+                    <style.LogInput name="id" type="text" />
+                </style.FlexCenter>
+                <style.FlexCenter>
+                    <label for="pw">PW</label>
+                    <style.LogInput name="pw" type="password" />
+                </style.FlexCenter>
             </style.SignForm>
-            <a>회원가입</a>
+            <a href="/SignUp">회원가입</a>
             <style.SignBtn>Login</style.SignBtn>
         </style.SignContainer>
     </style.FlexCenterColumn>

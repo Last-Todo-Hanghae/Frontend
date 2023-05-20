@@ -32,3 +32,4 @@ export const black80 = `rgba(0, 0, 0, 0.8)`
 export const black60 = `rgba(0, 0, 0, 0.6)`
 export const black40 = `rgba(0, 0, 0, 0.4)`
 export const black20 = `rgba(0, 0, 0, 0.2)`
+export const black05 = `rgba(0, 0, 0, 0.05)`
