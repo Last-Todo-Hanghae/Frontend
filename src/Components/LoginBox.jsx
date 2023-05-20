@@ -61,7 +61,7 @@ function LoginBox() {
             />
           </style.FlexCenter>
         </style.SignForm>
-        <a>회원가입</a>
+        <a href="/signup">회원가입</a>
         <style.SignBtn onClick={useLoginBtn}>Login</style.SignBtn>
       </style.SignContainer>
     </style.FlexCenterColumn>
