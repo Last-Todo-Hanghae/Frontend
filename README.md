@@ -17,6 +17,8 @@
 - styled-components
 - axios
 - react-router-dom
+- redux-toolkit
+- redux
 
 - 쓸까?말까? redux / react-redux / redux-toolkit
 
