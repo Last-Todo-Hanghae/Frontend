@@ -3,7 +3,6 @@ import * as style from "../Styles/styles"
 import TodoCard from './TodoCard'
 
 function MyTodoList({ todos, priority }) {
-    console.log(todos)
   return (
     <style.MyTodoListContainer>
         <h3>{ priority }</h3>

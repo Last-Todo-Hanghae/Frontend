@@ -4,8 +4,8 @@ import Checkbox from './Checkbox';
 import TodoCardBtns from './TodoCardBtns';
 
 function TodoCardEntry({ isDone, title, priority }) {
-    console.log(`title::${title}, isDone::${isDone}`)
-    console.log(`inputState:: ${priority}`)
+    // console.log(`title::${title}, isDone::${isDone}`)
+    // console.log(`inputState:: ${priority}`)
     return (
         <style.MyTodoCardEntryContainer>
             <style.MyTodoTextContainer>
