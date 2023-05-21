@@ -59,7 +59,7 @@ function SignUp() {
 
   const ShowNotice = ({ type, isSuccess }) => {
     if (type === "id") {
-      if (isSuccess) return <div>이 ID를 사용할 수 있습니다.</div>;
+      if (isSuccess) return  <div>이 ID를 사용할 수 있습니다.</div>;
       else
         return (
           <div>
