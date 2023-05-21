@@ -8,7 +8,7 @@ import { getTodo } from '../Axios/myTodo';
 
 function MyTodo() {
   const isLogged = useSelector((state) => state.todo.isLogged);
-  // const todos = getTodo()
+  const todos = getTodo()
   // console.log(todos)
 
   const data = myData.todoAll;
