@@ -8,7 +8,7 @@ import { AuthAPI } from "../Axios/api";
 
 function Header({ isLogged }) {
   const heading = "Last Todo";
-  const { data, isLoading,error } = useQuery("userinfo", AuthAPI.getUserInfo, {
+  const { data, isLoading, error } = useQuery("userinfo", AuthAPI.getUserInfo, {
     refetchOnWindowFocus: false,
   });
   

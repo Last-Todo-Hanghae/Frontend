@@ -9,21 +9,22 @@ import { useQuery } from 'react-query';
 
 function MyTodo() {
   // const isLogged = useSelector((state) => state.todo.isLogged);
-  const {data, isLoading,error} = useQuery('mytodo', TodoAPI.getTodo);
-  console.log(data)
+  const { data, isLoading, error } = useQuery("mytodo", TodoAPI.getTodo);
 
   if(isLoading || error){
     return null
   }
 
+  const todos = data.data.mytodo;
+
   let todays = []
   let weeks = []
   let months = []
 
-  if (!!data.mytodo) {
-    todays = data.mytodo.filter(todo => todo.todoPriority === "today")
-    weeks = data.mytodo.filter(todo => todo.todoPriority === "week")
-    months = data.mytodo.filter(todo => todo.todoPriority === "month")
+  if (!!todos.length) {
+    todays = todos.filter(todo => todo.todoPriority === "today")
+    weeks = todos.filter(todo => todo.todoPriority === "week")
+    months = todos.filter(todo => todo.todoPriority === "month")
   }
 
   return (
