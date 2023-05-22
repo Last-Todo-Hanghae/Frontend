@@ -21,7 +21,8 @@ instance.interceptors.request.use(
     }
 
     if (config.headers && token) {
-      const { accessToken, refreshToken } = JSON.parse(token);
+      // const { accessToken, refreshToken } = JSON.parse(token);
+      const { accessToken, refreshToken } = token;
       config.headers.authorization = `Bearer ${accessToken}`;
       config.headers.refreshToken = `Bearer ${refreshToken}`;
       return config;
@@ -32,6 +33,20 @@ instance.interceptors.request.use(
   function (error) {
     // Do something with request error
     console.log("request error", error);
+    return Promise.reject(error);
+  }
+);
+
+instance.interceptors.response.use(
+  function (response) {
+    // console.log(response);
+    if (response.headers.authorization) {
+      localStorage.setItem("token", response.headers.authorization);
+    }
+    return response;
+  },
+  function (error) {
+    error.message = "An error occurred";
     return Promise.reject(error);
   }
 );
