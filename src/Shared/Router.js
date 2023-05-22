@@ -25,7 +25,7 @@ function Router() {
             <Route path="/mytodo" element={<MyTodo />} />
             <Route path="/yourtodo" element={<YourTodo />} />
 
-            <Route element={PrivateRouter}>
+            {/* <Route element={PrivateRouter}>
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/mytodo" element={<MyTodo />} />
@@ -37,7 +37,7 @@ function Router() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/mytodo" element={<MyTodo />} />
               <Route path="/yourtodo" element={<YourTodo />} />
-            </Route>
+            </Route> */}
           </Routes>
         </style.Layout>
       </style.FlexCenterColumn>
