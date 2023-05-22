@@ -5,6 +5,7 @@ import { useMutation } from "react-query";
 import { postLogIn } from "../Axios/login";
 import { useDispatch } from "react-redux";
 import { login } from "../Redux/modules/todoSlice";
+import { AuthAPI } from "../Axios/api";
 
 function LoginBox() {
   // 중앙 state 관리 
@@ -32,10 +33,13 @@ function LoginBox() {
   // 로그인 정보 db로 데이터 보내기
   // 성공 시 : alert & isLogged state 변경 & mytodo로 이동
   // 실패 시 : alert
-  const mutation = useMutation(postLogIn, {
-    onSuccess: () => {
+  const mutation = useMutation(AuthAPI.postLogIn, {
+    onSuccess: (response) => {
       dispatch(login());
       alert("로그인에 성공하셨습니다.");
+
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
       
       navigate("/mytodo", {replace:true});
     },

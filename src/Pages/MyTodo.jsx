@@ -4,11 +4,17 @@ import MyTodoList from '../Components/MyTodoList';
 import * as style from "../Styles/styles";
 import TodoInput from '../Components/Common/TodoInput';
 import { useSelector, useEffect } from 'react-redux';
-import { getTodo } from '../Axios/myTodo';
+import { TodoAPI } from '../Axios/api';
+import { useQuery } from 'react-query';
 
 function MyTodo() {
-  const isLogged = useSelector((state) => state.todo.isLogged);
-  const data = getTodo()
+  // const isLogged = useSelector((state) => state.todo.isLogged);
+  const {data, isLoading,error} = useQuery('mytodo', TodoAPI.getTodo);
+  console.log(data)
+
+  if(isLoading || error){
+    return null
+  }
 
   let todays = []
   let weeks = []
