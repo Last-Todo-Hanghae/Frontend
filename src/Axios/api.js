@@ -11,23 +11,28 @@ const instance = axios.create({
 
 // instance.interceptors.request.use(
 //   function (config) {
-//     const token = localStorage.getItem("token");
+//     const accessToken = localStorage.getItem("accessToken")
+//     const refreshToken = localStorage.getItem("refreshToken")
 
-//     //요청시 AccessToken 계속 보내주기
-//     if (!token) {
-//       config.headers.accessToken = null;
-//       config.headers.refreshToken = null;
-//       return config;
-//     }
+//     config.headers.accessToken = `Bearer ${accessToken}`;
+//     config.headers.refreshToken = `Bearer ${refreshToken}`;
+//     return config;
 
-//     if (config.headers && token) {
-//       const { accessToken, refreshToken } = JSON.parse(token);
-//       config.headers.authorization = `Bearer ${accessToken}`;
-//       config.headers.refreshToken = `Bearer ${refreshToken}`;
-//       return config;
-//     }
-//     // Do something before request is sent
-//     console.log("request start", config);
+//     // //요청시 AccessToken 계속 보내주기
+//     // if (!token) {
+//     //   config.headers.accessToken = null;
+//     //   config.headers.refreshToken = null;
+//     //   return config;
+//     // }
+
+//     // if (config.headers && token) {
+//     //   const { accessToken, refreshToken } = JSON.parse(token);
+//     //   config.headers.authorization = `Bearer ${accessToken}`;
+//     //   config.headers.refreshToken = `Bearer ${refreshToken}`;
+//     //   return config;
+//     // }
+//     // // Do something before request is sent
+//     // console.log("request start", config);
 //   },
 //   function (error) {
 //     // Do something with request error
