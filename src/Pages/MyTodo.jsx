@@ -9,6 +9,8 @@ import instance from '../Axios/api';
 function MyTodo() {
   console.log(instance)
   const isLogged = useSelector((state) => state.todo.isLogged);
+  const todos = getTodo()
+  // console.log(todos)
 
   const data = myData.todoAll;
   const todays = data.filter(todo => todo.todoPriority === "today")
