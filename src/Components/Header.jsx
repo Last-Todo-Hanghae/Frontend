@@ -1,16 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import * as style from "../Styles/styles";
 import UserProfileMini from "./Common/UserProfileMini";
 import Menu from "./Common/Menu";
 import { useQuery } from "react-query";
 import { getUserInfo } from "../Axios/header";
+import { AuthAPI } from "../Axios/api";
 
 function Header({ isLogged }) {
   const heading = "Last Todo";
-  // const userName = "";
+  const { data, isLoading,error } = useQuery("userinfo", AuthAPI.getUserInfo, {
+    refetchOnWindowFocus: false,
+  });
+  
+  // useEffect(()=>{
+  //   const test = async () => {
+  //     const user =  getUserInfo().then(res=>)
+  //     console.log(user.data.userName)
+  //   }
+  // }, [])
+  
+  if(isLoading || error){
+    return null
+  }
 
-  const {data} = useQuery('userinfo', getUserInfo);
-  console.log(data.data.userName);
+  /*
+  */
 
   if (isLogged) {
     return (
