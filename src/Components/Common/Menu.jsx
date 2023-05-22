@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { MenuContainer } from "../../Styles/styles";
 import { useDispatch } from "react-redux";
-import { logout } from "../../Redux/modules/todoSlice";
+import { changeIsLog, logout } from "../../Redux/modules/todoSlice";
 
 function Menu({ children }) {
   // 중앙 state 관리
@@ -14,7 +14,7 @@ function Menu({ children }) {
     localStorage.setItem("accessToken", "");
     localStorage.setItem("refreshToken", "");
     
-    dispatch(logout());
+    dispatch(changeIsLog());
     navigate("/", {replace:true});
     alert('로그아웃 성공!')
   };

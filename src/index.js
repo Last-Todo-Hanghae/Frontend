@@ -6,19 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./Styles/globalStyles";
 import { Provider } from "react-redux";
 import store from "./Redux/config/configStore";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore } from "redux-persist";
 
-export let persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
         <GlobalStyles />
         <App />
-      </PersistGate>
     </Provider>
   </>
 );
