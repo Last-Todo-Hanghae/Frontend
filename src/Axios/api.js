@@ -52,18 +52,4 @@ instance.interceptors.response.use(
   }
 );
 
-instance.interceptors.response.use(
-  function (response) {
-    // console.log(response);
-    if (response.headers.authorization) {
-      localStorage.setItem("token", response.headers.authorization);
-    }
-    return response;
-  },
-  function (error) {
-    error.message = "An error occurred";
-    return Promise.reject(error);
-  }
-);
-
 export default instance;
