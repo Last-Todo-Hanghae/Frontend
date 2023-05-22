@@ -5,6 +5,7 @@ import * as style from "../Styles/styles";
 import TodoInput from '../Components/Common/TodoInput';
 import { useSelector } from 'react-redux';
 import instance from '../Axios/api';
+import { getTodo } from '../Axios/myTodo';
 
 function MyTodo() {
   console.log(instance)

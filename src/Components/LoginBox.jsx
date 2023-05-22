@@ -34,8 +34,9 @@ function LoginBox() {
   // 실패 시 : alert
   const mutation = useMutation(postLogIn, {
     onSuccess: () => {
-      alert("로그인에 성공하셨습니다.");
       dispatch(login());
+      alert("로그인에 성공하셨습니다.");
+      
       navigate("/mytodo", {replace:true});
     },
     onError: () => alert("로그인에 실패하셨습니다."),
