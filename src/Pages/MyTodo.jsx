@@ -3,20 +3,22 @@ import { myData } from '../Components/testMyTodo'
 import MyTodoList from '../Components/MyTodoList';
 import * as style from "../Styles/styles";
 import TodoInput from '../Components/Common/TodoInput';
-import { useSelector } from 'react-redux';
-import instance from '../Axios/api';
+import { useSelector, useEffect } from 'react-redux';
 import { getTodo } from '../Axios/myTodo';
 
 function MyTodo() {
-  console.log(instance)
   const isLogged = useSelector((state) => state.todo.isLogged);
-  const todos = getTodo()
-  // console.log(todos)
+  const data = getTodo()
 
-  const data = myData.todoAll;
-  const todays = data.filter(todo => todo.todoPriority === "today")
-  const weeks = data.filter(todo => todo.todoPriority === "week")
-  const months = data.filter(todo => todo.todoPriority === "month")
+  let todays = []
+  let weeks = []
+  let months = []
+
+  if (!!data.mytodo) {
+    todays = data.mytodo.filter(todo => todo.todoPriority === "today")
+    weeks = data.mytodo.filter(todo => todo.todoPriority === "week")
+    months = data.mytodo.filter(todo => todo.todoPriority === "month")
+  }
 
   return (
     <style.FlexCenterColumn>
