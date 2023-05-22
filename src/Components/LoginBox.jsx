@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { postLogIn } from "../Axios/login";
 import { useDispatch } from "react-redux";
-import { login } from "../Redux/modules/todoSlice";
+import { changeIsLog, login } from "../Redux/modules/todoSlice";
 import { AuthAPI } from "../Axios/api";
 
 function LoginBox() {
@@ -35,11 +35,11 @@ function LoginBox() {
   // 실패 시 : alert
   const mutation = useMutation(AuthAPI.postLogIn, {
     onSuccess: (response) => {
-      dispatch(login());
       alert("로그인에 성공하셨습니다.");
 
       localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.refreshToken);
+      dispatch(changeIsLog());
       
       navigate("/mytodo", {replace:true});
     },

@@ -13,8 +13,9 @@ instance.interceptors.request.use(
   function (config) {
     const accessToken = localStorage.getItem("accessToken")
     const refreshToken = localStorage.getItem("refreshToken")
-    config.headers.accessToken = `Bearer ${accessToken}`;
-    config.headers.refreshToken = `Bearer ${refreshToken}`;
+    console.log(`access: ${accessToken}`)
+    config.headers.accessToken = `Bearer ${accessToken ? accessToken:''}`;
+    config.headers.refreshToken = `Bearer ${refreshToken ? refreshToken:''}`;
     return config;
   },
   function (error) {

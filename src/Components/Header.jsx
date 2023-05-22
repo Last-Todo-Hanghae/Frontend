@@ -20,7 +20,11 @@ function Header({ isLogged }) {
   // }, [])
   
   if(isLoading || error){
-    return null
+    return (
+      <style.HeaderContainer>
+        <style.H1>{heading}</style.H1>
+      </style.HeaderContainer>
+    );
   }
 
   /*
