@@ -22,7 +22,6 @@ function TodoInput() {
     setInputContent(event.target.value);
   }
 
-  // const queryClient = new QueryClient();
   const queryClient = useQueryClient();
   const mutation = useMutation(TodoAPI.postTodo, {
     onSuccess: () => {

@@ -5,7 +5,7 @@ import TodoCardEntry from './Common/TodoCardEntry'
 function TodoCard({ todo }) {
 
   return (
-    <TodoCardEntry isDone={ todo.todoStatus } title={ todo.todoContent } priority={ todo.todoPriority }/>
+    <TodoCardEntry todoId={ todo.todoId } isDone={ todo.todoStatus } title={ todo.todoContent } priority={ todo.todoPriority }/>
 
   )
 }
