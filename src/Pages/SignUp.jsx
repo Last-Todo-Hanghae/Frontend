@@ -98,9 +98,6 @@ function SignUp() {
             <style.LogInputCentered name="pw" onChange={onChangeInput} value={pw} type="password" />
           </style.FlexCenter>
           <style.FlexCenter>
-            {
-
-            }
               <ShowNotice type="pw" isSuccess={pwPassed} />
           </style.FlexCenter>
           <style.FlexCenter>

@@ -1,46 +1,38 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import * as style from "../Styles/styles";
 import UserProfileMini from "./Common/UserProfileMini";
 import Menu from "./Common/Menu";
 import { useQuery } from "react-query";
-import { getUserInfo } from "../Axios/header";
 import { AuthAPI } from "../Axios/api";
+import { useNavigate } from "react-router-dom";
 
-function Header({ isLogged }) {
-  const heading = "Last Todo";
-  const { data, isLoading, error } = useQuery("userinfo", AuthAPI.getUserInfo, {
-    refetchOnWindowFocus: false,
+function Header() {
+  const MainHeading = "Last Todo";
+  const UserHeading = "My Todos, Your Todos, Logout"
+  const [test, setTest] = useState("");
+  const { data: userinfo } = useQuery(["userinfo"], AuthAPI.getUserInfo, {
+    select: (data) =>  data.data
   });
-  
-  if(isLoading || error){
-    return (
-      <style.HeaderContainer>
-        <style.H1>{heading}</style.H1>
-      </style.HeaderContainer>
-    );
-  } else if (isLogged) {
-      return (
-        <style.HeaderContainer>
-          <UserProfileMini>{data.data.userName}</UserProfileMini>
-          <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
-        </style.HeaderContainer>
-      )
-  }
+  const router = useNavigate();
 
-  // if (isLogged) {
-  //   return (
-  //     <style.HeaderContainer>
-  //       <UserProfileMini>{data.data.userName}</UserProfileMini>
-  //       <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
-  //     </style.HeaderContainer>
-  //   );
-  // } else {
-  //   return (
-  //     <style.HeaderContainer>
-  //       <style.H1>{heading}</style.H1>
-  //     </style.HeaderContainer>
-  //   );
-  // }
+  useEffect(() => {
+    setTest(localStorage.getItem("accessToken"));
+  }, [router]);
+
+  return (
+    <>
+      {test === null || test === "" ? (
+        <style.HeaderContainer>
+          <style.H1>{MainHeading}</style.H1>
+        </style.HeaderContainer>
+      ) : (
+        <style.HeaderContainer>
+          <UserProfileMini>{userinfo === undefined ? "loading" : userinfo.userName}</UserProfileMini>
+          <Menu myName={userinfo === undefined ? "loading" : userinfo.userName}>{UserHeading}</Menu>
+        </style.HeaderContainer>
+      )}
+    </>
+  );
 }
 
 export default Header;

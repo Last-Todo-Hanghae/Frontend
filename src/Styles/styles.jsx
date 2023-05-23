@@ -68,7 +68,7 @@ export const ProfileMiniContainer = styled(FlexCenter)`
 `;
 // 3. header container
 export const HeaderContainer = styled(FlexCenter)`
-  margin: 40px 0;
+  margin: 40px 0 20px 0;
   width: 100%;
   display: flex;
 `;
