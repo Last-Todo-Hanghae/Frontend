@@ -1,14 +1,17 @@
-import React from 'react'
-import * as style from "../../Styles/styles"
+// import React from 'react'
+// import * as style from "../../Styles/styles"
 
-function TodoCardBtns({ inputState }) {
-  return (
-    <>
-        <style.InputStateBtnSmall inputState={ inputState }>{ inputState }</style.InputStateBtnSmall>
-        <style.InputDefaultBtnSmall>modify</style.InputDefaultBtnSmall>
-        <style.InputDefaultBtnSmall>delete</style.InputDefaultBtnSmall>
-    </>
-  )
-}
+// function TodoCardBtns({ inputState }) {
+//   const stateChanger = (event) => {
+//     console.log(event.target.value)
+//   }
+//   return (
+//     <>
+//         <style.InputStateBtnSmall onClick={ stateChanger } value={ inputState }>{ inputState }</style.InputStateBtnSmall>
+//         <style.InputDefaultBtnSmall>modify</style.InputDefaultBtnSmall>
+//         <style.InputDefaultBtnSmall>delete</style.InputDefaultBtnSmall>
+//     </>
+//   )
+// }
 
-export default TodoCardBtns
+// export default TodoCardBtns
