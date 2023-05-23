@@ -9,7 +9,7 @@ function YourTodoList({ todos }) {
         return (
         // <style.YourTodoList key={todoId}>
         <style.YourTodoEntryContainer key={todoId}>
-            {todoContent.length > 15 ? todoContent.substr(0,15)+'...' : todoContent}
+            {todoContent.length > 14 ? todoContent.substr(0,14)+'...' : todoContent}
         </style.YourTodoEntryContainer>
         // </style.YourTodoList>
         );
