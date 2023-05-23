@@ -3,7 +3,7 @@ import { MenuContainer } from "../../Styles/styles";
 import { useDispatch } from "react-redux";
 import { changeIsLog, logout } from "../../Redux/modules/todoSlice";
 
-function Menu({ children }) {
+function Menu({ myName, children }) {
   // 중앙 state 관리
   const dispatch = useDispatch();
   // 로그아웃 시 login 페이지로 이동하기 위한 hook
@@ -31,7 +31,7 @@ function Menu({ children }) {
   return (
     <MenuContainer>
       {menuEntry.map((menu) => (
-        <Link to={menuLink[menu]} onClick={menuOnClick[menu]}>
+        <Link to={menuLink[menu]} onClick={menuOnClick[menu]} state={{myName}}>
           {menu}
         </Link>
       ))}

@@ -12,7 +12,7 @@ instance.interceptors.request.use(
   function (config) {
     const accessToken = localStorage.getItem("accessToken")
     const refreshToken = localStorage.getItem("refreshToken")
-    console.log(`access: ${accessToken}`)
+
     config.headers.accessToken = `Bearer ${accessToken ? accessToken:''}`;
     config.headers.refreshToken = `Bearer ${refreshToken ? refreshToken:''}`;
     return config;
@@ -31,8 +31,12 @@ export const AuthAPI = {
 }
 
 export const TodoAPI = {
+  // mytodo
   getTodo: () => instance.get("/api/mytodo"),
   postTodo: (payload) =>  instance.post("/api/mytodo", payload),
-  changePrior: (todoId, payload) => instance.put(`api/mytodo/${todoId}/priority`, payload)
+  changePrior: (todoId, payload) => instance.put(`api/mytodo/${todoId}/priority`, payload),
+  // yourtodo
+  getYourTodo: () => instance.get("/api/yourtodo"),
+  updateLike: (payload) => instance.put(`/api/yourtodo/${payload.userId}/like`, payload)
 }
 export default instance;
