@@ -23,12 +23,12 @@ export const FlexCenterColumn = styled(FlexCenter)`
 // 3. Layout 크기 지정
 export const Layout = styled(FlexCenterColumn)`
     /* ${props => {
-        if (props.width > 1200) {
-            return `width: 1200px;`
-        } else {
-            return `width: 800px;`
-        }
-    }} */
+    if (props.width > 1200) {
+      return `width: 1200px;`
+    } else {
+      return `width: 800px;`
+    }
+  }} */
   max-width: 1200px;
   min-width: 800px;
 `;
@@ -292,13 +292,13 @@ export const Entry = styled.span`
     margin-left: 10px;
     font-size: 14px;
     ${props => {
-        if (props.isDone) {
-            return `
+    if (props.isDone) {
+      return `
                 text-decoration: line-through;
                 color: ${sVar.black20};
             `
-        }
-    }}
+    }
+  }}
 `
 
 // MyTodo Container

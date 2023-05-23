@@ -2,14 +2,14 @@ import React from "react";
 import * as style from "../Styles/styles";
 
 function YourTodoList({ todos }) {
-    console.log(todos)
+
   return (
     <style.YourTodoContainer>
       {todos.map(({todoId, todoContent, todoStatus}) => {
         return (
         // <style.YourTodoList key={todoId}>
         <style.YourTodoEntryContainer key={todoId}>
-            {todoContent}
+            {todoContent.length > 15 ? todoContent.substr(0,15)+'...' : todoContent}
         </style.YourTodoEntryContainer>
         // </style.YourTodoList>
         );

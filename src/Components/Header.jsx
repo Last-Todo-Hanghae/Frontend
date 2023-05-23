@@ -34,7 +34,7 @@ function Header({ isLogged }) {
     return (
       <style.HeaderContainer>
         <UserProfileMini>{data.data.userName}</UserProfileMini>
-        <Menu>My Todos, Your Todos, Logout</Menu>
+        <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
       </style.HeaderContainer>
     );
   } else {
