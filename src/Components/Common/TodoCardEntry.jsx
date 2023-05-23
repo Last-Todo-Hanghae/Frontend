@@ -10,15 +10,11 @@ import { EmptyCheck, FilledCheck } from '../../Assets/icons';
 function TodoCardEntry({ todoId, isDone, title, priority }) {
   const queryClient = useQueryClient();
 
-  const changeStateMutation = useMutation(
-    ({ todoId, todoPriority }) => TodoAPI.changePrior(todoId, { todoPriority }),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("mytodo");
-      },
-    }
-  );
-  const todoStateChanger = () => {
+  const changePriorityMutation = useMutation(TodoAPI.changePrior, {
+    onSuccess: () => queryClient.invalidateQueries("mytodo")
+  })
+
+  const todoPriorityChanger = () => {
     // eslint-disable-next-line default-case
     switch (priority) {
       case "today":
@@ -31,7 +27,7 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
         priority = "today";
         break;
     }
-    changeStateMutation.mutate({ todoId, todoPriority: priority });
+    changePriorityMutation.mutate({ todoId, todoPriority: priority });
   };
 
   const changeIsDoneMutation = useMutation(TodoAPI.updateIsDone, {
@@ -50,7 +46,7 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
         <style.Entry isDone={isDone}>{title}</style.Entry>
       </style.MyTodoTextContainer>
       <style.MyTodoCardBtnContainer>
-        <style.InputStateBtnSmall onClick={todoStateChanger} value={priority}>
+        <style.InputStateBtnSmall onClick={todoPriorityChanger} value={priority}>
           {priority}
         </style.InputStateBtnSmall>
         <style.InputDefaultBtnSmall>modify</style.InputDefaultBtnSmall>
