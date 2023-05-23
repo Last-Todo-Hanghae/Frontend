@@ -217,6 +217,11 @@ export const InputDefaultBtn = styled.button`
   color: ${sVar.black60};
   border: 1px solid ${sVar.black60};
   border-radius: 4px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  &:hover {
+    background-color: ${sVar.black60};
+    color: white;
+  }
 `;
 
 // 4. 로그인, 회원가입 button
@@ -242,18 +247,36 @@ export const InputStateBtn = styled(InputDefaultBtn)`
   ${(props) => {
     if (props.inputState === "today") {
       return `
-                color: ${sVar.blackGreen80};
+                background-color: ${sVar.blackGreen80};
+                color: white;
                 border: 1px solid ${sVar.blackGreen80};
+                &:hover {
+                  background-color: ${sVar.blackGreen80};
+                  color: white;
+                  border: 1px solid ${sVar.blackGreen80};
+                }
             `;
     } else if (props.inputState === "week") {
       return `
-                color: ${sVar.darkGreen100};
-                border: 1px solid ${sVar.darkGreen100};
+                background-color: ${sVar.darkGreen80};
+                color: white;
+                border: 1px solid ${sVar.darkGreen80};
+                &:hover {
+                  background-color: ${sVar.darkGreen80};
+                  color: white;
+                  border: 1px solid ${sVar.darkGreen80};
+                }
             `;
     } else if (props.inputState === "month") {
       return `
-                color: ${sVar.midGreen80};
+                background-color: ${sVar.midGreen80};
+                color: white;
                 border: 1px solid ${sVar.midGreen80};
+                &:hover {
+                  background-color: ${sVar.midGreen80};
+                  color: white;
+                  border: 1px solid ${sVar.midGreen80};
+                }
             `;
     }
   }}
@@ -269,6 +292,23 @@ export const InputDefaultBtnSmall = styled(InputDefaultBtn)`
     width: auto;
     height: auto;
     padding: 4px 6px;
+
+    ${props => {
+      if (props.modify === true) {
+        return `
+          background-color: ${sVar.blackGreen40};
+          color: white;
+        `
+      }
+      if (props.modify !== undefined) {
+        return `
+          &:hover {
+            background-color: ${sVar.blackGreen40};
+            color: white;
+          }
+        `
+      }
+    }}
 `
 
 // MyTodo Checkbox
@@ -302,6 +342,16 @@ export const Entry = styled.span`
             `
     }
   }}
+`
+export const ModifyingEntry = styled.input`
+  display: flex;
+  width: 130px;
+  border: none;
+  border-bottom: 1px solid ${sVar.black40};
+  &:focus {
+    outline: none;
+    caret-color: ${sVar.black20};
+  }
 `
 
 // MyTodo Container

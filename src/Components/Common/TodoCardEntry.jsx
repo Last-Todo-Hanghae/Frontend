@@ -3,7 +3,7 @@ import * as style from "../../Styles/styles";
 import Checkbox from "./Checkbox";
 import TodoCardBtns from "./TodoCardBtns";
 import { useMutation, useQueryClient } from "react-query";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { TodoAPI } from "../../Axios/api";
 import { EmptyCheck, FilledCheck } from '../../Assets/icons';
 
@@ -35,7 +35,38 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
   });
   const isDoneHandler = () => {
     changeIsDoneMutation.mutate({ todoId })
-};
+  };
+
+  const INIT_MODIFY_TITLE = ""
+  const [modifyTitle, setModifyTitle] = useState(INIT_MODIFY_TITLE)
+  const [modifyOn, setModifyOn] = useState(false)
+  const modifyTodoMutation = useMutation(TodoAPI.modifyTodo, {
+    onSuccess: () => queryClient.invalidateQueries("mytodo")
+  });
+  const modifyTodoHandler = () => {
+    if (!modifyOn) {
+        setModifyOn(!modifyOn)
+    } else {
+        setModifyOn(!modifyOn)
+        if (modifyTitle !== INIT_MODIFY_TITLE) {
+            modifyTodoMutation.mutate({ todoId, todoContent: modifyTitle })
+            setModifyTitle(INIT_MODIFY_TITLE)
+        }
+        
+    }
+    
+  }
+  const modifyChangeHandler = (event) => {
+    setModifyTitle(event.target.value)
+  }
+  const inputRef = useRef();
+  useEffect(() => {
+    if (modifyOn) {
+        inputRef.current.focus();
+    }
+    
+  }, [modifyOn]);
+
 
   return (
     <style.MyTodoCardEntryContainer>
@@ -43,13 +74,13 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
         <style.NoBorderBtn onClick={isDoneHandler}>
           {isDone ? <FilledCheck /> : <EmptyCheck />}
         </style.NoBorderBtn>
-        <style.Entry isDone={isDone}>{title}</style.Entry>
+        {modifyOn ? <style.ModifyingEntry ref={inputRef} onChange={modifyChangeHandler} value={modifyTitle}/> : <style.Entry isDone={isDone}>{title}</style.Entry>}
       </style.MyTodoTextContainer>
       <style.MyTodoCardBtnContainer>
         <style.InputStateBtnSmall onClick={todoPriorityChanger} value={priority}>
           {priority}
         </style.InputStateBtnSmall>
-        <style.InputDefaultBtnSmall>modify</style.InputDefaultBtnSmall>
+        <style.InputDefaultBtnSmall modify={modifyOn} onClick={modifyTodoHandler}>modify</style.InputDefaultBtnSmall>
         <style.InputDefaultBtnSmall>delete</style.InputDefaultBtnSmall>
       </style.MyTodoCardBtnContainer>
     </style.MyTodoCardEntryContainer>
