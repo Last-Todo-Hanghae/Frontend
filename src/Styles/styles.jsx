@@ -289,7 +289,10 @@ export const Checkbox = styled.input`
 
 // MyTodo Entry
 export const Entry = styled.span`
-    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
     font-size: 14px;
     ${props => {
     if (props.isDone) {
@@ -366,4 +369,12 @@ export const MyTodoTextContainer = styled.div`
     display: flex;
     padding: 10px;
     align-items: center;
+`
+
+// no border btn
+export const NoBorderBtn = styled.button`
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

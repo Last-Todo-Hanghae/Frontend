@@ -18,11 +18,6 @@ function UserProfile({ Likes, userId, children }) {
 
   // click 시 isLike 변경
   const onLikeClickHandler = () => {
-    // if (Likes.length === 0) {
-    //   Likes.push({ isLike: true });
-    // } else {
-    //   Likes.isLike = !Likes.isLike;
-    // }
     mutation.mutate({ userId: userId });
   }
 
