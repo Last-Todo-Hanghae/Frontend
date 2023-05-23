@@ -34,7 +34,8 @@ export const TodoAPI = {
   // mytodo
   getTodo: () => instance.get("/api/mytodo"),
   postTodo: (payload) =>  instance.post("/api/mytodo", payload),
-  changePrior: (todoId, payload) => instance.put(`api/mytodo/${todoId}/priority`, payload),
+  changePrior: (payload) => instance.put(`api/mytodo/${payload.todoId}/priority`, payload),
+  updateIsDone: (payload) => instance.put(`/api/mytodo/${payload.todoId}/isdone`, payload),
   // yourtodo
   getYourTodo: () => instance.get("/api/yourtodo"),
   updateLike: (payload) => instance.put(`/api/yourtodo/${payload.userId}/like`, payload)
