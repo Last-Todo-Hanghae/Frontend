@@ -32,6 +32,7 @@ export const AuthAPI = {
 
 export const TodoAPI = {
   getTodo: () => instance.get("/api/mytodo"),
-  postTodo: (payload) =>  instance.post("/api/mytodo", payload)
+  postTodo: (payload) =>  instance.post("/api/mytodo", payload),
+  changePrior: (todoId, payload) => instance.put(`api/mytodo/${todoId}/priority`, payload)
 }
 export default instance;
