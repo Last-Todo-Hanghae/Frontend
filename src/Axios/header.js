@@ -1,12 +1,9 @@
-import instance from "./api";
-import axios from "axios";
+// import instance from "./api";
 
-const getUserInfo = async () => {
-    
+// const getUserInfo = async () => {
+//     const response = await instance.get("/api/userInfo");
+//     console.log(response)
+//     return response;
+// };
 
-    const response = await instance.get("/api/userInfo");
-    console.log(response)
-    return response;
-};
-
-export { getUserInfo };
+// export { getUserInfo };

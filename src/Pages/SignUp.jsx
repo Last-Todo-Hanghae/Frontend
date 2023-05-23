@@ -59,45 +59,56 @@ function SignUp() {
 
   const ShowNotice = ({ type, isSuccess }) => {
     if (type === "id") {
-      if (isSuccess) return  <div>이 ID를 사용할 수 있습니다.</div>;
+      if (isSuccess) return  <style.ShowNoticeSuccess>이 ID를 사용할 수 있습니다.</style.ShowNoticeSuccess>;
       else
         return (
-          <div>
+          <style.ShowNotice>
             아이디는 4자 이상 15자 이하, 영어 대소문자 및 숫자만 사용할 수
             있습니다.
-          </div>
+          </style.ShowNotice>
         );
     } else if (type === "pw") {
-      if (isSuccess) return <div>이 비밀번호를 사용할 수 있습니다.</div>;
+      if (isSuccess) return <style.ShowNoticeSuccess>이 비밀번호를 사용할 수 있습니다.</style.ShowNoticeSuccess>;
       else
         return (
-          <div>
+          <style.ShowNotice>
             비밀번호는 8자 이상 20자 이하, 영어 대소문자 및 숫자, 특수문자를
             모두 사용해야 합니다.
-          </div>
+          </style.ShowNotice>
         );
     } else if (type === "confirm") {
-      if (isSuccess) return <div>비밀번호가 일치합니다.</div>;
-      else return <div>비밀번호가 일치하지 않습니다.</div>;
+      if (isSuccess) return <style.ShowNoticeSuccess>비밀번호가 일치합니다.</style.ShowNoticeSuccess>;
+      else return <style.ShowNotice>비밀번호가 일치하지 않습니다.</style.ShowNotice>;
     }
   };
 
   // asdfA123!
   return (
     <style.SignContainer>
-      {/* <style.SignContainer> */}
         <style.SignForm>
           <style.FlexCenter>
-            <label for="id">ID</label>
-            <style.LogInput name="id" onChange={onChangeInput} value={id} type="text" />
+            <label htmlFor="id">ID</label>
+            <style.LogInputCentered name="id" onChange={onChangeInput} value={id} type="text" />            
           </style.FlexCenter>
           <style.FlexCenter>
-            <label for="pw">PW</label>
-            <style.LogInput name="pw" onChange={onChangeInput} value={pw} type="password" />
+              <ShowNotice type="id" isSuccess={idPassed} />
           </style.FlexCenter>
           <style.FlexCenter>
-            <label for="pwConfirm">확인</label>
-            <style.LogInput name="pwConfirm" onChange={onConfirmHandler} value={pwConfirm} type="password" />
+            <label htmlFor="pw">PW</label>
+            <style.LogInputCentered name="pw" onChange={onChangeInput} value={pw} type="password" />
+          </style.FlexCenter>
+          <style.FlexCenter>
+            {
+
+            }
+              <ShowNotice type="pw" isSuccess={pwPassed} />
+          </style.FlexCenter>
+          <style.FlexCenter>
+            <label htmlFor="pwConfirm">확인</label>
+            <style.LogInputCentered name="pwConfirm" onChange={onConfirmHandler} value={pwConfirm} type="password" />
+          </style.FlexCenter>
+          <style.FlexCenter>
+              <ShowNotice type="confirm" isSuccess={confirmPassed} />
           </style.FlexCenter>
         </style.SignForm>
         <a href="/">로그인</a>

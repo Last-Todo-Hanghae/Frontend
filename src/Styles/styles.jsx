@@ -68,7 +68,7 @@ export const ProfileMiniContainer = styled(FlexCenter)`
 `;
 // 3. header container
 export const HeaderContainer = styled(FlexCenter)`
-  margin: 20px 0;
+  margin: 40px 0;
   width: 100%;
   display: flex;
 `;
@@ -213,6 +213,15 @@ export const LogInput = styled(Input)`
   border-radius: 20px;
   /* background-color: ${sVar.defWhite}; */
   margin: 10px 0;
+`
+
+export const LogInputCentered = styled(LogInput)`
+  text-align: center;
+  ${props => {
+    if(props !== undefined) {
+      return props
+    }
+  }}
 `
 
 // Mytodo Input default btn
@@ -461,4 +470,15 @@ export const Modal = styled.div`
   width: 780px;
   min-height: 400px;
   border-radius: 10px;
+`
+
+//showNotice Style
+export const ShowNotice = styled.div`
+  font-size: 10pt;
+  margin: 10px 0 30px 20px;
+  color: ${sVar.black40};
+`
+
+export const ShowNoticeSuccess = styled(ShowNotice)`
+  color: ${sVar.darkGreen60};
 `

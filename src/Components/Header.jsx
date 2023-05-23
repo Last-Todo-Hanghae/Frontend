@@ -12,38 +12,35 @@ function Header({ isLogged }) {
     refetchOnWindowFocus: false,
   });
   
-  // useEffect(()=>{
-  //   const test = async () => {
-  //     const user =  getUserInfo().then(res=>)
-  //     console.log(user.data.userName)
-  //   }
-  // }, [])
-  
   if(isLoading || error){
     return (
       <style.HeaderContainer>
         <style.H1>{heading}</style.H1>
       </style.HeaderContainer>
     );
+  } else if (isLogged) {
+      return (
+        <style.HeaderContainer>
+          <UserProfileMini>{data.data.userName}</UserProfileMini>
+          <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
+        </style.HeaderContainer>
+      )
   }
 
-  /*
-  */
-
-  if (isLogged) {
-    return (
-      <style.HeaderContainer>
-        <UserProfileMini>{data.data.userName}</UserProfileMini>
-        <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
-      </style.HeaderContainer>
-    );
-  } else {
-    return (
-      <style.HeaderContainer>
-        <style.H1>{heading}</style.H1>
-      </style.HeaderContainer>
-    );
-  }
+  // if (isLogged) {
+  //   return (
+  //     <style.HeaderContainer>
+  //       <UserProfileMini>{data.data.userName}</UserProfileMini>
+  //       <Menu myName={data.data.userName}>My Todos, Your Todos, Logout</Menu>
+  //     </style.HeaderContainer>
+  //   );
+  // } else {
+  //   return (
+  //     <style.HeaderContainer>
+  //       <style.H1>{heading}</style.H1>
+  //     </style.HeaderContainer>
+  //   );
+  // }
 }
 
 export default Header;

@@ -27,7 +27,6 @@ instance.interceptors.request.use(
 export const AuthAPI = {
   getUserInfo: () => instance.get("/api/userInfo"),
   postLogIn: (payload) => instance.post("/api/login", payload),
-
 }
 
 export const TodoAPI = {
