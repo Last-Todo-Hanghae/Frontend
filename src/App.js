@@ -5,14 +5,20 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { changeIsLog } from "./Redux/modules/todoSlice";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(changeIsLog());
-  }, [])
+  // useEffect(() => {
+  //   dispatch(changeIsLog());
+  // }, [])
   
   return (
     <QueryClientProvider client={queryClient}>
