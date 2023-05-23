@@ -76,6 +76,11 @@ export const HeaderContainer = styled(FlexCenter)`
 export const ProfileContainer = styled(FlexCenter)`
     gap: 15px;
     margin: 20px 10px 20px 10px;
+    ${props => {
+      if (!!props.gap) {
+        return `gap: ${props.gap};`
+      }
+    }}
 `
 
 // 모달
@@ -206,7 +211,7 @@ export const Input = styled.input`
 
 export const LogInput = styled(Input)`
   border-radius: 20px;
-  /* background-color: white; */
+  /* background-color: ${sVar.defWhite}; */
   margin: 10px 0;
 `
 
@@ -220,7 +225,7 @@ export const InputDefaultBtn = styled.button`
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   &:hover {
     background-color: ${sVar.black60};
-    color: white;
+    color: ${sVar.defWhite};
   }
 `;
 
@@ -233,7 +238,7 @@ export const SignBtn = styled(InputDefaultBtn)`
   &:hover {
     background-color: ${sVar.vividGreen80};
     border: 1px solid ${sVar.vividGreen100};
-    color: white;
+    color: ${sVar.defWhite};
   }
   /* width: 160px;
   height: 40px; */
@@ -248,33 +253,33 @@ export const InputStateBtn = styled(InputDefaultBtn)`
     if (props.inputState === "today") {
       return `
                 background-color: ${sVar.blackGreen80};
-                color: white;
+                color: ${sVar.defWhite};
                 border: 1px solid ${sVar.blackGreen80};
                 &:hover {
                   background-color: ${sVar.blackGreen80};
-                  color: white;
+                  color: ${sVar.defWhite};
                   border: 1px solid ${sVar.blackGreen80};
                 }
             `;
     } else if (props.inputState === "week") {
       return `
                 background-color: ${sVar.darkGreen80};
-                color: white;
+                color: ${sVar.defWhite};
                 border: 1px solid ${sVar.darkGreen80};
                 &:hover {
                   background-color: ${sVar.darkGreen80};
-                  color: white;
+                  color: ${sVar.defWhite};
                   border: 1px solid ${sVar.darkGreen80};
                 }
             `;
     } else if (props.inputState === "month") {
       return `
                 background-color: ${sVar.midGreen80};
-                color: white;
+                color: ${sVar.defWhite};
                 border: 1px solid ${sVar.midGreen80};
                 &:hover {
                   background-color: ${sVar.midGreen80};
-                  color: white;
+                  color: ${sVar.defWhite};
                   border: 1px solid ${sVar.midGreen80};
                 }
             `;
@@ -297,14 +302,14 @@ export const InputDefaultBtnSmall = styled(InputDefaultBtn)`
       if (props.modify === true) {
         return `
           background-color: ${sVar.blackGreen40};
-          color: white;
+          color: ${sVar.defWhite};
         `
       }
       if (props.modify !== undefined) {
         return `
           &:hover {
             background-color: ${sVar.blackGreen40};
-            color: white;
+            color: ${sVar.defWhite};
           }
         `
       }
@@ -322,7 +327,7 @@ export const Checkbox = styled.input`
     border: 2px solid ${sVar.black40};
     &:checked {
         background: ${sVar.darkGreen80};
-        color: white;
+        color: ${sVar.defWhite};
         border: none;
     }
 `
@@ -356,10 +361,16 @@ export const ModifyingEntry = styled.input`
 
 // MyTodo Container
 export const MyTodoContainer = styled.div`
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+  margin-top: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+`
+
+// YourTodoDetailContainer
+export const DetailedTodoContainer = styled(MyTodoContainer)`
+  width: 95%;
 `
 
 // MyTodo List Container
@@ -385,6 +396,7 @@ export const MyTodoCardContainer = styled.div`
     align-items: flex-start;
     padding: 20px 10px;
 `
+
 
 // MyTodoBtn Container
 export const MyTodoCardBtnContainer = styled(FlexCenter)`
@@ -427,4 +439,26 @@ export const NoBorderBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+
+// 기본 모달 스타일
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: ${sVar.black60};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+` 
+export const Modal = styled.div`
+  background-color: #FBFBFD;
+  padding: 1em;
+  position: relative;
+  width: 780px;
+  min-height: 400px;
+  border-radius: 10px;
 `
