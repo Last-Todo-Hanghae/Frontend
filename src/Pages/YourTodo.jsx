@@ -5,9 +5,12 @@ import { TodoAPI } from "../Axios/api";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 
+
+
 function YourTodo() {
   const location = useLocation();
   const myName = location.state?.myName;
+
   
   // get yourTodo API
   const { data, isLoading, error } = useQuery("yourtodo", TodoAPI.getYourTodo);
@@ -19,6 +22,7 @@ function YourTodo() {
   let yourTodos = data.data.yourtodo;
   yourTodos = yourTodos.filter((item) => item.userName !== myName )
 
+ 
   return (
     <style.YourBody>
       {yourTodos.map((yourTodos) => {

@@ -40,6 +40,7 @@ export const TodoAPI = {
   deleteTodo: (payload) => instance.delete(`/api/mytodo/${payload.todoId}`, payload),
   // yourtodo
   getYourTodo: () => instance.get("/api/yourtodo"),
-  updateLike: (payload) => instance.put(`/api/yourtodo/${payload.userId}/like`, payload)
+  updateLike: (payload) => instance.put(`/api/yourtodo/${payload.userId}/like`, payload),
+  getYourTodoDetail: (userId) => instance.get(`/api/yourtodo/${userId}`)
 }
 export default instance;
