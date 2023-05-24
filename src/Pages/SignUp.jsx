@@ -88,7 +88,7 @@ function SignUp() {
         <style.SignForm>
           <style.FlexCenter>
             <label htmlFor="id">ID</label>
-            <style.LogInputCentered name="id" onChange={onChangeInput} value={id} type="text" />            
+            <style.LogInputCentered autoComplete="off" name="id" onChange={onChangeInput} value={id} type="text" />            
           </style.FlexCenter>
           <style.FlexCenter>
               <ShowNotice type="id" isSuccess={idPassed} />
