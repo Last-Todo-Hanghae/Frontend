@@ -116,12 +116,20 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
         >
           {priority}
         </style.InputStateBtnSmall>
-        <style.InputDefaultBtnSmall
-          modify={modifyOn}
-          onClick={modifyTodoHandler}
-        >
-          modify
-        </style.InputDefaultBtnSmall>
+        { isDone ? (
+          <style.InputStateBtnSmall disabled>
+            modify
+          </style.InputStateBtnSmall>
+          ) : (
+            <style.InputDefaultBtnSmall
+              modify={modifyOn}
+              onClick={modifyTodoHandler}
+            >
+              modify
+            </style.InputDefaultBtnSmall>
+          )
+        }
+
         <style.InputDefaultBtnSmall onClick={deleteTodoHandler}>delete</style.InputDefaultBtnSmall>
       </style.MyTodoCardBtnContainer>
     </style.MyTodoCardEntryContainer>

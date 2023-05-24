@@ -343,6 +343,19 @@ export const InputStateBtnSmall = styled(InputStateBtn)`
           }
         `
       }
+      if (props.disabled) {
+        return `
+          background-color: ${sVar.black20};
+          color: ${sVar.black40};
+          border: 1px solid ${sVar.black40};
+          &:hover {
+            background-color: ${sVar.black20};
+            color: ${sVar.black40};
+            border: 1px solid ${sVar.black40};
+            cursor: not-allowed;
+          }
+        `
+      }
     }}
 `
 export const InputDefaultBtnSmall = styled(InputDefaultBtn)`
