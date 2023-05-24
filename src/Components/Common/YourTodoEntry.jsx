@@ -6,7 +6,9 @@ function YourTodoEntry({ isDone, title, priority }) {
     return (
         // <style.MyTodoCardEntryContainer>
             <style.MyTodoTextContainer>
-                {isDone ? <FilledCheck /> : <EmptyCheck />}
+                <style.NoBorderBtn disabled={true}>
+                    {isDone ? <FilledCheck /> : <EmptyCheck />}
+                </style.NoBorderBtn>
                 <style.Entry isDone={isDone}>{title}</style.Entry>
             </style.MyTodoTextContainer>
         // </style.MyTodoCardEntryContainer>

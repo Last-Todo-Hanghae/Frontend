@@ -1,3 +1,4 @@
+import * as style from "../../Styles/styles"
 import { Link, useNavigate } from "react-router-dom";
 import { MenuContainer } from "../../Styles/styles";
 import { useDispatch } from "react-redux";
@@ -30,10 +31,10 @@ function Menu({ myName, children }) {
 
   return (
     <MenuContainer>
-      {menuEntry.map((menu) => (
-        <Link to={menuLink[menu]} onClick={menuOnClick[menu]} state={{myName}}>
+      {menuEntry.map((menu, idx) => (
+        <style.StyledLink key={ idx } to={menuLink[menu]} onClick={menuOnClick[menu]} state={{myName}}>
           {menu}
-        </Link>
+        </style.StyledLink>
       ))}
     </MenuContainer>
   );

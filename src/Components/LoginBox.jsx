@@ -57,16 +57,17 @@ function LoginBox() {
         <style.SignForm>
           <style.FlexCenter>
             <label for="id">ID</label>
-            <style.LogInput
+            <style.LogInputCentered
               name="id"
               type="text"
               value={id}
               onChange={onChangeInput}
+              autoComplete="off"
             />
           </style.FlexCenter>
           <style.FlexCenter>
             <label for="pw">PW</label>
-            <style.LogInput
+            <style.LogInputCentered
               name="pw"
               type="password"
               value={pw}

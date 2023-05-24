@@ -6,7 +6,7 @@ function SignUpBtn({ isPassed, onClick }) {
   if (isPassed) {
     return <style.SignBtn onClick={onClick}>{message}</style.SignBtn>;
   } else {
-    return <style.SignBtn disabled >{message}</style.SignBtn>;
+    return <style.SignBtn disabled>{message}</style.SignBtn>;
   }
 }
 

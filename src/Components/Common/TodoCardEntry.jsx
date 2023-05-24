@@ -63,6 +63,20 @@ function TodoCardEntry({ todoId, isDone, title, priority }) {
   const modifyChangeHandler = (event) => {
     setModifyTitle(event.target.value);
   };
+  useEffect(() => {
+    if (modifyOn) {
+      const handleKeyDown = (event) => {
+        if (event.key === "Escape") {
+          setModifyOn(false);
+          setModifyTitle(INIT_MODIFY_TITLE);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [modifyOn]);
   //// 생성된 input에 자동으로 커서 넣기
   const inputRef = useRef();
   useEffect(() => {
