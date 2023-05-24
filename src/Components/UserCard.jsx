@@ -31,7 +31,7 @@ function UserCard({data}) {
   return (
     <>
       <style.YourCard onClick={showUserModal}>
-        <UserProfile profileGap="15px" iconWidth="25px" Likes={Likes} userId={userId}>{userName}</UserProfile>
+        <UserProfile profileGap="15px" iconWidth="40px" Likes={Likes} userId={userId}>{userName}</UserProfile>
         <YourTodoList todos={Todos}></YourTodoList>
       </style.YourCard>
       {isModalOpen &&

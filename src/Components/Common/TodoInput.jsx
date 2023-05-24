@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as style from "../../Styles/styles"
 import InputStatusBtn from './InputStatusBtn'
 import { useMutation, useQueryClient } from 'react-query'
@@ -29,17 +29,44 @@ function TodoInput() {
     }
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     mutation.mutate({ todoContent: inputContent, todoPriority: inputStatus });
     setInputContent(INPUT_INIT_STATE);
   }
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!event.ctrlKey) return;
+      switch (event.key) {
+        case '1':
+          setInputStatus("today");
+          break;
+        case '2':
+          setInputStatus("week");
+          break;
+        case '3':
+          setInputStatus("month");
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
-    <style.InputContainer>
-        <style.Input value={ inputContent } onChange={ handleInputChange } />
-        <InputStatusBtn stateChanger={ stateChanger } onClick={ stateChanger }>{ inputStatus }</InputStatusBtn>
-        <style.InputDefaultBtn onClick={ handleSubmit }>submit</style.InputDefaultBtn>
-    </style.InputContainer>
+    <form onSubmit={ handleSubmit }>
+      <style.InputContainer>
+        <style.InputCentered placeholder="write your todo" value={ inputContent } onChange={ handleInputChange } />
+        <InputStatusBtn type={"button"} onClick={ stateChanger }>{ inputStatus }</InputStatusBtn>
+        <style.InputDefaultBtn type="submit">submit</style.InputDefaultBtn>
+      </style.InputContainer>
+    </form>
   )
 }
 

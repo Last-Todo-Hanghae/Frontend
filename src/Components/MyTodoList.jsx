@@ -7,7 +7,7 @@ function MyTodoList({ todos, priority }) {
     <style.MyTodoListContainer>
         <h3>{ priority }</h3>
         <style.MyTodoCardContainer>
-            { todos.map(todo => <TodoCard todo={ todo }/>) }
+            { todos.map(todo => <TodoCard key={ todo.todoId } todo={ todo }/>) }
         </style.MyTodoCardContainer>
     </style.MyTodoListContainer>
   )

@@ -1,6 +1,7 @@
 // 작성하실 때 용도를 주석으로 달아주세여~!
 import { styled } from "styled-components";
 import * as sVar from "./styleVarients";
+import { Link as RouterLink } from "react-router-dom";
 
 // 기본 레이아웃
 // 1. flexbox, 가운데 정렬
@@ -10,10 +11,12 @@ export const FlexCenter = styled.div`
   justify-content: center;
 
   > label {
+    width: 30px;
     color: ${sVar.black60};
     font-weight: bold;
     display: inline-block;
     margin-right: 10px;
+    text-align: center;
   }
 `;
 // 2. flexbox, 가운데 정렬, column 방향 정렬
@@ -58,7 +61,8 @@ export const ProfileCircle = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1.5px solid ${sVar.black10};
+  background-color: ${sVar.black05};
 `;
 // 3. profile container
 export const ProfileMiniContainer = styled(FlexCenter)`
@@ -155,14 +159,15 @@ export const SignInput = styled.input`
 // 1. YourTodo - todo Body
 export const YourBody = styled(FlexCenter)`
   padding: 20px;
-  gap: 20px;
+  gap: 26px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;
 
 // 2. YourTodo - todo Card
 export const YourCard = styled.div`
-  width: 280px;
+  max-width: 280px;
+  padding: 20px;
   height: 300px;
   box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.05);
   /* border: 1px solid ${sVar.black20}; */
@@ -189,6 +194,7 @@ export const InputContainer = styled(FlexCenter)`
   width: 660px;
   justify-content: space-around;
   padding: 30px 0 40px 0;
+  margin: 20px 0 10px 0;
 `;
 
 // MyTodo Input
@@ -200,14 +206,26 @@ export const Input = styled.input`
   border-radius: 8px;
   padding: 5px 12px;
   box-shadow: 0 0 5px ${sVar.black40};
-  caret-color: ${sVar.vividGreen100};
+  caret-color: ${sVar.windyGreen80};
+  color: ${sVar.black60};
   &:focus {
-    outline: 4px double ${sVar.vividGreen100};
+    outline: 4px double ${sVar.windyGreen40};
+    &:-ms-input-placeholder {
+      color: transparent;
+    }
+    &::-webkit-input-placeholder {
+      color: transparent;
+    }
   }
   &::placeholder {
     color: ${sVar.black40};
+    font-size: 10pt;
   }
 `;
+
+export const InputCentered = styled(Input)`
+  text-align: center;
+`
 
 export const LogInput = styled(Input)`
   border-radius: 20px;
@@ -217,11 +235,11 @@ export const LogInput = styled(Input)`
 
 export const LogInputCentered = styled(LogInput)`
   text-align: center;
-  ${props => {
+  /* ${props => {
     if(props !== undefined) {
       return props
     }
-  }}
+  }} */
 `
 
 // Mytodo Input default btn
@@ -243,34 +261,56 @@ export const SignBtn = styled(InputDefaultBtn)`
   transition: background-color 0.2s ease-in-out,
               color 0.2s ease-in-out,
               border 0.2s ease-in-out;
-  
+  margin-bottom: 10px;
   &:hover {
-    background-color: ${sVar.vividGreen80};
-    border: 1px solid ${sVar.vividGreen100};
+    background-color: ${sVar.darkGreen40};
+    border: 1px solid ${sVar.darkGreen60};
     color: ${sVar.defWhite};
   }
-  /* width: 160px;
-  height: 40px; */
-  /* border: 1px solid gray;
-  border-radius: 10px; */
-  /* cursor: pointer; */
+  ${props => {
+    if (props.disabled === true) {
+      return `
+        background-color: ${sVar.black20};
+        color: ${sVar.black40};
+        border: 1px solid ${sVar.black20};
+        &:hover {
+          background-color: ${sVar.black20};
+          color: ${sVar.black40};
+          border: 1px solid ${sVar.black20};
+          cursor: not-allowed;
+        }
+      `
+    }
+  }}
 `;
 
 // MyTodo Input State Btns
 export const InputStateBtn = styled(InputDefaultBtn)`
+  box-shadow: 2px 2px 2px ${sVar.black20} inset;
   ${(props) => {
     if (props.inputState === "today") {
       return `
-                background-color: ${sVar.blackGreen80};
+                background-color: ${sVar.darkGreen40};
                 color: ${sVar.defWhite};
-                border: 1px solid ${sVar.blackGreen80};
+                border: 1px solid ${sVar.darkGreen40};
                 &:hover {
-                  background-color: ${sVar.blackGreen80};
+                  background-color: ${sVar.darkGreen40};
                   color: ${sVar.defWhite};
-                  border: 1px solid ${sVar.blackGreen80};
+                  border: 1px solid ${sVar.darkGreen40};
                 }
             `;
     } else if (props.inputState === "week") {
+      return `
+                background-color: ${sVar.darkGreen60};
+                color: ${sVar.defWhite};
+                border: 1px solid ${sVar.darkGreen60};
+                &:hover {
+                  background-color: ${sVar.darkGreen60};
+                  color: ${sVar.defWhite};
+                  border: 1px solid ${sVar.darkGreen60};
+                }
+            `;
+    } else if (props.inputState === "month") {
       return `
                 background-color: ${sVar.darkGreen80};
                 color: ${sVar.defWhite};
@@ -279,17 +319,6 @@ export const InputStateBtn = styled(InputDefaultBtn)`
                   background-color: ${sVar.darkGreen80};
                   color: ${sVar.defWhite};
                   border: 1px solid ${sVar.darkGreen80};
-                }
-            `;
-    } else if (props.inputState === "month") {
-      return `
-                background-color: ${sVar.midGreen80};
-                color: ${sVar.defWhite};
-                border: 1px solid ${sVar.midGreen80};
-                &:hover {
-                  background-color: ${sVar.midGreen80};
-                  color: ${sVar.defWhite};
-                  border: 1px solid ${sVar.midGreen80};
                 }
             `;
     }
@@ -301,6 +330,20 @@ export const InputStateBtnSmall = styled(InputStateBtn)`
     width: auto;
     height: auto;
     padding: 4px 6px;
+    ${props => {
+      if(props.value) {
+        return `
+          background-color: ${sVar.blackGreen60};
+          color: ${sVar.defWhite};
+          border: 1px solid ${sVar.blackGreen80};
+          &:hover {
+            background-color: ${sVar.blackGreen60};
+            color: ${sVar.defWhite};
+            border: 1px solid ${sVar.blackGreen80};
+          }
+        `
+      }
+    }}
 `
 export const InputDefaultBtnSmall = styled(InputDefaultBtn)`
     width: auto;
@@ -344,10 +387,14 @@ export const Checkbox = styled.input`
 // MyTodo Entry
 export const Entry = styled.span`
     display: flex;
+    width: 160px;
     align-items: center;
-    justify-content: center;
     margin-left: 4px;
+    /* margin-top: 2px; */
     font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.2px;
+    color: ${sVar.black80};
     ${props => {
     if (props.isDone) {
       return `
@@ -370,7 +417,7 @@ export const ModifyingEntry = styled.input`
 
 // MyTodo Container
 export const MyTodoContainer = styled.div`
-  margin-top: 10px;
+  margin-top: 30px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -423,15 +470,20 @@ export const MyTodoCardEntryContainer = styled(FlexCenterColumn)`
     /* border: 1px solid ${sVar.black20}; */
     margin: 10px 0;
     box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.05);
+    min-height: 150px;
+    display: flex;
+    justify-content: space-around;
 `
 
-export const YourTodoEntryContainer = styled(MyTodoCardEntryContainer)`
-  width: 85%;
+export const YourTodoEntryContainer = styled(FlexCenterColumn)`
+  width: 100%;
   padding: 10px;
   box-shadow: 2px 8px 10px 2px rgba(34, 34, 34, 0.02);
   border: 1.5px solid ${sVar.black20};
   margin: 0 10px 5px 10px;
   color: ${sVar.black60};
+  border-radius: 10px;
+  font-size: 10pt;
 `
 
 // MyTodo Text Container
@@ -439,7 +491,7 @@ export const MyTodoTextContainer = styled.div`
     width: 100%;
     display: flex;
     padding: 10px;
-    align-items: center;
+    align-items: flex-start;
 `
 
 // no border btn
@@ -448,6 +500,17 @@ export const NoBorderBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3px 6px 2px 6px;
+  ${props => {
+    if(props.disabled) {
+      return `
+        &:hover {
+          cursor: default;
+        }
+        `
+      }
+    }
+  }
 `
 
 
@@ -467,7 +530,7 @@ export const Modal = styled.div`
   background-color: #FBFBFD;
   padding: 1em;
   position: relative;
-  width: 780px;
+  width: 800px;
   min-height: 400px;
   border-radius: 10px;
 `
@@ -482,3 +545,13 @@ export const ShowNotice = styled.div`
 export const ShowNoticeSuccess = styled(ShowNotice)`
   color: ${sVar.darkGreen60};
 `
+
+// styled Link 만들기 : 메뉴 hover시 색상 변경
+export const StyledLink = styled(RouterLink)`
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${sVar.midGreen100};
+    text-decoration: underline;
+  }
+`
+

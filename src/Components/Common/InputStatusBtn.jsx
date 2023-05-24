@@ -1,9 +1,9 @@
 import React from 'react'
-import { InputStateBtn } from '../../Styles/styles'
+import * as style from "../../Styles/styles"
 
-function InputStatusBtn({ stateChanger, children }) {
+function InputStatusBtn({ type, onClick, children }) {
   return (
-    <InputStateBtn onClick={ stateChanger } inputState={ children }>{ children }</InputStateBtn>
+    <style.InputStateBtn type={ type } onClick={ onClick } inputState={ children }>{ children }</style.InputStateBtn>
   )
 }
 
